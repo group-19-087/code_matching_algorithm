@@ -1,3 +1,6 @@
 output/
 images/
 discard/
+__pycache__/
+
+*.mov

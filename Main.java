@@ -1,44 +1,25 @@
-class Person {
-    public Person() {
-        System.out.println("Person default 
-        constructor");    
-    }
-
-    public Person(int para1 ) {
-        System.out.println("Person overloaded 
-        constructor");   
-    }
-
-}
-
-class Student extends Person {
-    public Student() {
-        System.out.println("Student default 
-        constructor");
-    }
-    public Student(int para1, int para2 ) {
-        super(para1);
-        System.out.println("Student overloaded 
-        constructor");
-    }
-    
-}
-
-class PostGraduate extends Student {
-    public PostGraduate() {
-        System.out.println("Postgraduate 
-        default constructor");
-    }
-    public PostGraduate(int para1, int para2,
-    int para3 ) {
-        super(para1, para2);
-        System.out.println("Postgraduate 
-        overloaded constructor");
-    }
-}
+import java.util.*;
 
 class Main {
     public static void main(String[] args) {
-        PostGraduate p = new PostGraduate(1, 2, 3 );
+        Collection<Integer> myList = new ArrayList<Integer>();
+        myList.add(10);
+        myList.add(20);
+        myList.add(30);
+        myList.add(50);
+        System.out.println("element at index 1 = " + myList.get(1));
+
+        for (Integer var : myList) 
+            System.out.println(var);
+
+        ArrayList l1 = new ArrayList();
+        ArrayList<Integer> l2 = new ArrayList<Integer>(); 
+        ArrayList<Integer> l3 = new ArrayList();
+        Collection l4 = new ArrayList();
+        Collection<Integer> l5 = new ArrayList<Integer>(); 
+        Collection<Integer> l6 = new ArrayList();
+        List l7 = new ArrayList();
+        List<Integer> l8 = new ArrayList<Integer>(); 
+        List<Integer> l9 = new ArrayList();   
     }
 }

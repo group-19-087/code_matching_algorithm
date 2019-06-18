@@ -1,21 +1,12 @@
 from PIL import Image # import the necessary packages
 import pytesseract
-import argparse
 import cv2
 import os
 import re
 
-ap = argparse.ArgumentParser()
-ap.add_argument("--path", required=True,
-	help="path to input images to be OCR'd")
-ap.add_argument("-p", "--preprocess", type=str, default="thresh",
-	help="type of preprocessing to be done")
-args = vars(ap.parse_args())
-
 # ============================================================================================
 
 # ============================================================================================
-
 
 def extract_text(mpath_to_File, mpreprocess):
 	# load the example image and convert it to grayscale
@@ -48,7 +39,7 @@ def extract_text(mpath_to_File, mpreprocess):
 # ============================================================================================
 
 def write_to_disk(string, filename):
-	output_filename = filename.replace("jpg", "txt")
+	output_filename = filename.replace("tiff", "txt")
 	save_path = "./output"
 	if not (os.path.exists(save_path)):
 		try:  
@@ -65,12 +56,12 @@ def write_to_disk(string, filename):
 # ============================================================================================
 
 # ============================================================================================
-
-files = os.listdir(args["path"])
-preprocess = args["preprocess"]
-for file in files:
-	path_to_File = os.path.join(args["path"], file)
-	print(path_to_File)
-	write_to_disk(extract_text(path_to_File, preprocess), file)
+def run_ocr(image_path, preprocess="thresh"):
+	files = os.listdir(image_path)
+	for file in files:
+		path_to_File = os.path.join(image_path, file)
+		print(path_to_File)
+		write_to_disk(extract_text(path_to_File, preprocess), file)
+	return
 
 # ============================================================================================
