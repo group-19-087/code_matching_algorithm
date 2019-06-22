@@ -16,6 +16,11 @@ def match(path_to_code_file, path_to_frames):
     with open(path_to_code_file) as code:
         for line in code:
             lines_in_source_code.append(line.strip())
+            
+    data = {
+        "filename": path_to_code_file, 
+        "lines":[]
+        }
 
     # lines_in_source_code.reverse()
     frames = os.listdir(path_to_frames)
@@ -47,6 +52,13 @@ def match(path_to_code_file, path_to_frames):
         h, m, s = extract_timestamp(seconds)
         timestamp = '{:d}:{:02d}:{:02d}'.format(h, m, s)
 
+        line = {
+            "content": sc_line,
+            "timestamp": timestamp,
+            "seconds": seconds
+        }
+        data["lines"].append(line)
+
         print("max ratio for line ", idx, " = ", max_ratio, " at time : ", timestamp, " at frame : ", max_ratio_frame)
-    print("\n")
+    print("\n", data)
 # ============================================================================================
