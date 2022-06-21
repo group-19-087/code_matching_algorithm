@@ -1,5 +1,5 @@
 certifi==2019.6.16
-numpy==1.16.4
+numpy==1.22.0
 olefile==0.46
 Pillow==6.0.0
 pytesseract==0.2.7
